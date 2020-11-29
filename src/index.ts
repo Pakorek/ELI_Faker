@@ -1,23 +1,37 @@
 import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server';
-import { buildSchema } from 'type-graphql';
-import { WildersResolver } from './resolvers/Wilders';
-import mongoose from 'mongoose';
+import {ApolloServer} from 'apollo-server-express';
+import Express from 'express';
+import {buildSchema} from 'type-graphql';
+import {createConnection, Connection, getMongoManager} from "typeorm";
+import {TeacherResolver} from './resolvers/Teacher';
+import {CoursesResolver} from "./resolvers/Courses";
+import {Teacher} from "./entities/Teacher";
+import {Course} from "./entities/Course";
+import {Student} from "./entities/Student";
+import {Promotion} from "./entities/Promotion";
+import { createSchool } from "./utils/faker/School";
 
-const initialize = async () => {
-    console.log('Connecting mongodb...');
-    await mongoose
-        .connect('mongodb://127.0.0.1:27017/wilderdb', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            autoIndex: true,
-        });
+// Create Database with n Teachers, n Promotions and n Students
+createSchool("WCS", 5, 2, 5)
 
-    const schema = await buildSchema({ resolvers: [WildersResolver] });
-    const server = new ApolloServer({ schema });
-    await server.listen(4300);
-    console.log('Server has started!');
-};
 
-initialize();
+// const startServer = async () => {
+//     const connexion: Connection = await createConnection({
+//         type: 'mongodb',
+//         url: 'mongodb://127.0.0.1:27017/wilderdb',
+//         useUnifiedTopology: true,
+//         entities: [Teacher, Course, Student, Promotion]
+//     });
+//
+//     const schema = await buildSchema({resolvers: [TeacherResolver, CoursesResolver]})
+//
+//     const app = Express()
+//     const apolloServer = new ApolloServer({schema}) //4
+//
+//     apolloServer.applyMiddleware({app}); // 5
+//
+//     app.listen(4300, () => {
+//         console.log('server started');
+//     })
+// }
+// startServer()

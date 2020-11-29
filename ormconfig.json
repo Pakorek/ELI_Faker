@@ -1,0 +1,11 @@
+{
+  "type": "mongodb",
+  "host": "localhost",
+  "database": "wilderdb",
+  "port": "27017",
+  "synchronize": true,
+  "useUnifiedTopology": true,
+  "entities": [
+    "./src/entities/*.ts"
+  ]
+}
