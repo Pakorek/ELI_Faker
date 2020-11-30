@@ -7,9 +7,7 @@ import {Promotion} from "../../entities/Promotion";
 import {ObjectID} from "mongodb";
 
 
-export async function generateCourse(promotionId: ObjectID, teacher: Teacher, number: number): Promise<void> {
-    const CoursesCtrl = new CoursesResolver()
-    const { _id } = teacher
+export async function generateCourse(promotionId: ObjectID, teacherId: ObjectID, number: number): Promise<void> {
 
     for (let i = 0; i < number; i++) {
         const title = faker.lorem.words()
@@ -17,7 +15,7 @@ export async function generateCourse(promotionId: ObjectID, teacher: Teacher, nu
         const record = faker.internet.url()
 
         const manager = getMongoManager()
-        const course = new Course(title, content, _id, promotionId, record)
+        const course = new Course(title, content, teacherId, promotionId, record)
         await manager.save(course)
     }
 }

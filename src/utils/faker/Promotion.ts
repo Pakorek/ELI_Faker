@@ -16,15 +16,13 @@ export async function generatePromotions(nbProms: number, nbStudentsPerProm: num
         const title = faker.lorem.words()
         const promotion = new Promotion(title)
 
-        // Take all Teachers for now
-        promotion.teachers = TEACHERS;
-
         // save Promotion to get id later
         await manager.save(promotion)
 
-        // Generate n Courses for each Teacher
+        // Assign each teacher_id to prom & Generate n Courses for each Teacher
         for (const teacher of Object.values(TEACHERS)) {
-            await generateCourse(promotion._id, teacher, 1);
+            promotion.teachers.push(teacher._id)
+            await generateCourse(promotion._id, teacher._id, 1);
         }
 
         // generate nbStudents

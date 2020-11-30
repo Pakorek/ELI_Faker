@@ -12,7 +12,7 @@ import {Promotion} from "./entities/Promotion";
 import { createSchool } from "./utils/faker/School";
 
 // Create Database with n Teachers, n Promotions and n Students
-createSchool("WCS", 5, 2, 5)
+createSchool("WCS3", 1, 3, 1)
 
 
 // const startServer = async () => {

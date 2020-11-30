@@ -20,11 +20,11 @@ export class Promotion {
 
     @Field(() => Teacher)
     @Column()
-    teachers!: Teacher[];
+    teachers: ObjectID[] = [];
 
     @Field(() => Student)
     @Column()
-    students!: Student[];
+    students!: ObjectID[];
 
     //start_date!: string;
 
