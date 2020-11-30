@@ -3,8 +3,6 @@ import { Student } from "./Student";
 import {ID, Field, ObjectType, InputType} from "type-graphql";
 import {Entity, ObjectIdColumn, Column, BaseEntity} from "typeorm";
 import {ObjectID} from "mongodb";
-import {TypeMetaFieldDef} from "graphql";
-
 
 @ObjectType('PromotionType')
 @InputType('PromotionInput')
