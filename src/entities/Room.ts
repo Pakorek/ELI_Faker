@@ -20,11 +20,15 @@ export class Room extends BaseEntity {
 
     @Field()
     @Column()
-    url: string;
+    url!: string;
 
-    constructor(name: string | number, url: string) {
+    constructor(name: string | number, floorId: ObjectID) {
         super();
         this.name = name;
-        this.url = url;
+        this.floorId = floorId;
     }
+
+    // function assignUrl()
+
+    //
 }

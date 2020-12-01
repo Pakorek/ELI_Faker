@@ -1,10 +1,10 @@
 import {ID, Field, ObjectType, InputType} from "type-graphql";
-import {Entity, ObjectIdColumn, Column, BaseEntity} from "typeorm";
+import {Entity, ObjectIdColumn, Column, BaseEntity, MongoEntityManager, getMongoManager} from "typeorm";
 import {ObjectID} from "mongodb";
 import { Room } from "./Room";
 
-@ObjectType('PromotionType')
-@InputType('PromotionInput')
+@ObjectType('FloorType')
+@InputType('FLoorInput')
 @Entity()
 export class Floor extends BaseEntity {
     @Field(() => ID)
@@ -13,16 +13,19 @@ export class Floor extends BaseEntity {
 
     @Field()
     @Column()
+    schoolId: ObjectID;
+
+    @Field()
+    @Column()
     name: string | number;
 
     @Field()
     @Column()
-    schoolId: ObjectID;
+    nbRooms: number = 0;
 
-    // useless -> Room.find(floorId = this.floorId)
     @Field()
     @Column()
-    rooms: ObjectID[] = [];
+    manager: MongoEntityManager = getMongoManager();
 
     constructor(name: string | number, schoolId: ObjectID) {
         super();
@@ -30,7 +33,14 @@ export class Floor extends BaseEntity {
         this.schoolId = schoolId;
     }
 
-    // createRoom = async () => {
-    //     const room = new Room()
-    // }
+    createRoom = async (): Promise<void> => {
+        // assign url in constructor
+        await this.manager.save(new Room(this.nbRooms, this._id))
+    }
+
+    // getRoom
+
+    // updateRoom( name | url )
+
+    // destroyLastRoom
 }

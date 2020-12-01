@@ -17,10 +17,9 @@ export class VirtualSchool extends BaseEntity {
     schoolId: ObjectID;
 
     // useless -> Floor.find(schoolId = this.id)
-    // but maybe faster ?
-    @Field()
-    @Column()
-    floors: ObjectID[] = [];
+    // @Field()
+    // @Column()
+    // floors: ObjectID[] = [];
 
     @Field()
     @Column()
@@ -39,12 +38,13 @@ export class VirtualSchool extends BaseEntity {
 
     createFloor = async (): Promise<void> => {
         const floorNb = this.nbFloors;
-        const floor = await this.manager.save(new Floor(floorNb, this._id));
-        //this.floors.push(floor._id);
+        await this.manager.save(new Floor(floorNb, this._id));
         ++this.nbFloors;
     }
 
     // getFloor
 
     // getFloors Floor.find(schoolId = this.id)
+
+    // updateFloor
 }
