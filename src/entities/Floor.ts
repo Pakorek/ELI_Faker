@@ -17,10 +17,20 @@ export class Floor extends BaseEntity {
 
     @Field()
     @Column()
-    rooms: Room[] = [];
+    schoolId: ObjectID;
 
-    constructor(name: string | number) {
+    // useless -> Room.find(floorId = this.floorId)
+    @Field()
+    @Column()
+    rooms: ObjectID[] = [];
+
+    constructor(name: string | number, schoolId: ObjectID) {
         super();
         this.name = name;
+        this.schoolId = schoolId;
     }
+
+    // createRoom = async () => {
+    //     const room = new Room()
+    // }
 }

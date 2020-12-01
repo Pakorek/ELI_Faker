@@ -10,6 +10,10 @@ export class Room extends BaseEntity {
     @ObjectIdColumn()
     _id!: ObjectID;
 
+    @Field(() => ID)
+    @ObjectIdColumn()
+    floorId!: ObjectID;
+
     @Field()
     @Column()
     name: string | number;
