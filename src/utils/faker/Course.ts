@@ -16,7 +16,7 @@ export async function generateCourse(promotionId: ObjectID, teacherId: ObjectID,
 
         const manager = getMongoManager()
         const course = new Course(title, content, teacherId, promotionId, record)
-        await manager.save(course)
+        await manager.save(course).catch(err => console.log(err))
     }
 }
 

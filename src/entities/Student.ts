@@ -2,12 +2,13 @@ import { User } from "./User";
 import {Promotion} from "./Promotion";
 import {StudentEvaluation} from "./StudentEvaluation";
 import {StudentCourse} from "./StudentCourse";
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType, InputType} from "type-graphql";
 import {BaseEntity, Column, Entity, ObjectIdColumn} from "typeorm";
 import {ObjectID} from "mongodb";
 import {Teacher} from "./Teacher";
 
-@ObjectType('TeacherType')
+@ObjectType('StudentType')
+@InputType('StudentInput')
 @Entity()
 export class Student extends BaseEntity {
     @Field(() => ID)
@@ -22,7 +23,7 @@ export class Student extends BaseEntity {
     @Column()
     lastName: string;
 
-    @Field()
+    @Field(() => ID)
     @Column()
     promotionId: ObjectID;
 

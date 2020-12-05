@@ -14,8 +14,8 @@ export async function generateStudents(number: number, promotionId: ObjectID) {
         const firstName = faker.name.firstName()
 
         const student = new Student(firstName, lastName, promotionId)
-        const saved = await manager.save(student)
-        STUDENTS.push(saved._id)
+        const saved = await manager.save(student).catch(err => console.log(err))
+        if (saved) STUDENTS.push(saved._id)
     }
 
     return STUDENTS
