@@ -26,8 +26,6 @@ export class VirtualSchool extends BaseEntity {
     @Column()
     nbFloors: number = 0;
 
-    manager: MongoEntityManager = getMongoManager();
-
     // @Field(() => ID)
     // @OneToMany(type => Teacher, { lazy: true })
     // schoolId: Lazy<VirtualSchool>;
@@ -36,14 +34,14 @@ export class VirtualSchool extends BaseEntity {
     constructor(name: string) {
         super();
         this.name = name;
-        // create Floor 0 for staff
-        this.createFloor()
     }
 
-    createFloor = async (): Promise<void> => {
-        await this.manager.save(new Floor(this.nbFloors, this._id));
-        ++this.nbFloors;
-    }
+    // createFloor = async (): Promise<this> => {
+    //     const manager: MongoEntityManager = getMongoManager();
+    //     await manager.save(new Floor(this.nbFloors, this._id));
+    //     ++this.nbFloors;
+    //     return this
+    // }
 
     // getFloor
 

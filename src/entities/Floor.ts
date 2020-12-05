@@ -23,8 +23,6 @@ export class Floor extends BaseEntity {
     @Column()
     nbRooms: number = 0;
 
-    manager: MongoEntityManager = getMongoManager();
-
     constructor(name: number, schoolId: ObjectID) {
         super();
         this.name = name;
@@ -33,7 +31,9 @@ export class Floor extends BaseEntity {
 
     createRoom = async (): Promise<void> => {
         // assign url in constructor
-        await this.manager.save(new Room(this.nbRooms, this._id))
+        const manager: MongoEntityManager = getMongoManager();
+
+        await manager.save(new Room(this.nbRooms, this._id))
         ++this.nbRooms
     }
 

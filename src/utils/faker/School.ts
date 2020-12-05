@@ -37,7 +37,7 @@ export async function createSchool(
         type: 'mongodb',
         url: `mongodb://127.0.0.1:27017/${schoolName}`,
         useUnifiedTopology: true,
-        entities: [Teacher, Course, Student, Promotion]
+        entities: [Teacher, Course, Student, Promotion, VirtualSchool, Floor, Room]
     });
 
     const schema: GraphQLSchema = await buildSchema({
@@ -63,8 +63,8 @@ export async function createSchool(
     const school = await manager.save(new VirtualSchool(schoolName))
 
     // create nbTeachers
-    await generateTeachers(nbTeachers, school._id).catch(err => console.log(err))
+    await generateTeachers(nbTeachers, school._id)
 
     // create nbPromotion
-    await generatePromotions(nbPromotions, nbStudentsPerPromotion, school._id).catch(err => console.log(err))
+    await generatePromotions(nbPromotions, nbStudentsPerPromotion, school._id)
 }
