@@ -17,15 +17,15 @@ export class Floor extends BaseEntity {
 
     @Field()
     @Column()
-    name: number;
+    level: number;
 
     @Field()
     @Column()
     nbRooms: number = 0;
 
-    constructor(name: number, schoolId: ObjectID) {
+    constructor(level: number, schoolId: ObjectID) {
         super();
-        this.name = name;
+        this.level = level;
         this.schoolId = schoolId;
     }
 

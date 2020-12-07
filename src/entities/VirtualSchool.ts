@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import {ObjectID} from "mongodb";
 import { Floor } from "./Floor";
+import {prop} from "@typegoose/typegoose";
 
 @ObjectType('VirtualSchoolType')
 @InputType('VirtualSchoolInput')
@@ -36,12 +37,12 @@ export class VirtualSchool extends BaseEntity {
         this.name = name;
     }
 
-    // createFloor = async (): Promise<this> => {
-    //     const manager: MongoEntityManager = getMongoManager();
-    //     await manager.save(new Floor(this.nbFloors, this._id));
-    //     ++this.nbFloors;
-    //     return this
-    // }
+    // @Field(() => Floor)
+    createFloor = async (): Promise<this> => {
+        const manager: MongoEntityManager = getMongoManager();
+        await manager.save(new Floor(this.nbFloors, this._id));
+        return this
+    }
 
     // getFloor
 
