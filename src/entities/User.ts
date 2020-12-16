@@ -6,15 +6,14 @@ import { prop } from "@typegoose/typegoose";
 
 @ObjectType('UserType')
 @InputType('UserInput')
+@Entity() // ?
 export abstract class User extends BaseEntity {
     @Field()
     @Column()
-    @prop()
     firstName!: string;
 
     @Field()
     @Column()
-    @prop()
     lastName!: string;
 
     /*   birthdate!: string;
@@ -23,10 +22,10 @@ export abstract class User extends BaseEntity {
 
        email!: string;
 
-       phone!: string;
+       phone!: string; // number ?
 
        adress!: string;
 
-       created_at!: string;
+       created_at!: string; // Date
    */
 }

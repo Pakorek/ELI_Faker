@@ -35,11 +35,11 @@ export class Student extends BaseEntity {
     }
 
 
-    //classmates!: Student[];
+    // classmates!: Student[];  // ObjectID[]
 
-    //courses!: StudentCourse[];
+    // courses!: StudentCourse[];
     // or PromotionCourse ? => course for prom, not one student
     // but one course for one student allow 'was_present' or other ...
 
-    //evaluations!: StudentEvaluation[];
+    // evaluations!: StudentEvaluation[];
 }

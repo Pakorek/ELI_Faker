@@ -52,9 +52,7 @@ export class Teacher extends BaseEntity {
     }
 
     /*
-        @Field()
-        @prop()
-        promotions?: Promotion[];
+
 
         @Field()
         @prop()

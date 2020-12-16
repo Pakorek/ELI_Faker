@@ -30,7 +30,7 @@ export async function createSchool(
     //     type: 'mongodb',
     //     url: `mongodb://127.0.0.1:27017/${schoolName}`,
     //     useUnifiedTopology: true,
-    //     entities: [Teacher, Course, Student, Promotion, VirtualSchool, Room, Floor]
+    //     entities: [Teacher, Course, Student, Promotion, VirtualSchool, Room, FloorStyle]
     // });
 
     const connexion: Connection = await createConnection({
@@ -55,9 +55,9 @@ export async function createSchool(
     })
 
     // create Virtual School ?
-    // Floor 000 -> staff : rooms 001, 002, 003 ... -> meeting room, etc
-    // Floor 100 -> 1st grade : classrooms 101, 102 ...
-    // Floor 200 -> 2nd grade : classrooms 201, 202 ...
+    // FloorStyle 000 -> staff : rooms 001, 002, 003 ... -> meeting room, etc
+    // FloorStyle 100 -> 1st grade : classrooms 101, 102 ...
+    // FloorStyle 200 -> 2nd grade : classrooms 201, 202 ...
     // ...
     const manager = getMongoManager()
     const school = await manager.save(new VirtualSchool(schoolName))

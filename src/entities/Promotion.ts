@@ -28,9 +28,9 @@ export class Promotion {
     @Column()
     students!: ObjectID[];
 
-    //start_date!: string;
+    //start_date!: Date;
 
-    //end_date!: string;
+    //end_date!: Date;
 
     constructor(title: string, schoolId: ObjectID) {
         this.title = title;

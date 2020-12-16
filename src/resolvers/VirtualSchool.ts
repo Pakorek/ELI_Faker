@@ -14,6 +14,7 @@ export class VirtualSchoolResolver {
         return this.manager.find(VirtualSchool, {})
     }
 
+    // then with schoolId
     @Query(() => [Floor])
     public async getFloors() {
         return this.manager.find(Floor, {})
