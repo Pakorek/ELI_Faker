@@ -20,8 +20,9 @@ export class CoursesResolver {
 
 
     @Query(() => [Course])
-    public async getCoursesByTeacherId(@Arg('teacherId', () => [Course]) teacherId: ObjectID) {
-        return this.manager.find(Course, {teacherId: teacherId})
+    public async getCoursesByTeacherId(
+        @Ctx() { Teacher }: Context) {
+        return this.manager.find(Course, {teacherId: Teacher._id})
     }
 
     @Mutation(() => Course!)

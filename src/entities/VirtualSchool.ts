@@ -36,7 +36,6 @@ export class VirtualSchool extends BaseEntity {
         this.name = name;
     }
 
-    // @Field(() => FloorStyle)
     createFloor = async (): Promise<this> => {
         const manager: MongoEntityManager = getMongoManager();
         await manager.save(new Floor(this.nbFloors, this._id));
@@ -45,7 +44,7 @@ export class VirtualSchool extends BaseEntity {
 
     // getFloor
 
-    // Floors FloorStyle.find(schoolId = this.id)
+    // Floors
 
     // updateFloor
 }

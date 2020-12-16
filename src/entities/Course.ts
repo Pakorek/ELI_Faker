@@ -16,6 +16,8 @@ export class Course extends BaseEntity {
     @Column()
     title!: string;
 
+    @Field()
+    @Column()
     //subtitle!: string;
 
     @Field()
@@ -34,7 +36,7 @@ export class Course extends BaseEntity {
 
     //duration!: number;
 
-    //exercices!: Exercice[];
+    //exercices!: Exercice[]; // ObjectID[]
 
     //program!: Program;
 
