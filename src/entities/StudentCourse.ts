@@ -9,11 +9,11 @@ import {Column, Entity, ObjectIdColumn} from "typeorm";
 export class StudentCourse {
     @Field(() => ID)
     @ObjectIdColumn()
-    student!: ObjectID;
+    studentId!: ObjectID;
 
     @Field(() => ID)
     @ObjectIdColumn()
-    course!: ObjectID;
+    courseId!: ObjectID;
 
     @Field()
     @Column()
