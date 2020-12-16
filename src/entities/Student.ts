@@ -10,18 +10,18 @@ import {Teacher} from "./Teacher";
 @ObjectType('StudentType')
 @InputType('StudentInput')
 @Entity()
-export class Student extends BaseEntity {
+export class Student extends User {
     @Field(() => ID)
     @ObjectIdColumn()
     _id!: ObjectID;
 
-    @Field()
-    @Column()
-    firstName: string;
-
-    @Field()
-    @Column()
-    lastName: string;
+    // @Field()
+    // @Column()
+    // firstName: string;
+    //
+    // @Field()
+    // @Column()
+    // lastName: string;
 
     @Field(() => ID)
     @Column()
