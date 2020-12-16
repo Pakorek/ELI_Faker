@@ -5,7 +5,7 @@ import { Speciality } from "./Speciality";
 import { Course } from "./Course";
 import { Evaluation } from "./Evaluation";
 import {ID, Field, InputType, ObjectType} from "type-graphql";
-import {Entity, ObjectIdColumn, Column, BaseEntity} from "typeorm";
+import {Entity, ObjectIdColumn, Column, BaseEntity, ManyToMany, JoinTable} from "typeorm";
 import { prop } from "@typegoose/typegoose";
 import {ObjectID} from "mongodb";
 
@@ -17,13 +17,9 @@ export class Teacher extends User {
     @ObjectIdColumn()
     _id!: ObjectID;
 
-    @Field(() => ID)
-    @Column()
-    schoolId: ObjectID;
-
-    @Field()
-    @Column()
-    speciality: string;
+    @ManyToMany(() => Speciality)
+    @JoinTable()
+    speciality: Speciality[];
 
     @Field()
     @Column()
@@ -33,14 +29,13 @@ export class Teacher extends User {
     @Column()
     classroom: string;
 
-    constructor(firstName: string, lastName: string, speciality: string, seniority: number, classroom: string, schoolId: ObjectID) {
+    constructor(firstName: string, lastName: string, speciality: Speciality[], seniority: number, classroom: string) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.speciality = speciality;
         this.seniority = seniority;
         this.classroom = classroom;
-        this.schoolId = schoolId;
     }
 
     /*
