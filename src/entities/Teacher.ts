@@ -17,6 +17,10 @@ export class Teacher extends BaseEntity {
     @ObjectIdColumn()
     _id!: ObjectID;
 
+    @Field(() => ID)
+    @Column()
+    schoolId: ObjectID;
+
     @Field()
     @Column()
     firstName: string;
@@ -37,19 +41,18 @@ export class Teacher extends BaseEntity {
     @Column()
     classroom: string;
 
-    constructor(firstName: string, lastName: string, speciality: string, seniority: number, classroom: string) {
+    constructor(firstName: string, lastName: string, speciality: string, seniority: number, classroom: string, schoolId: ObjectID) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.speciality = speciality;
         this.seniority = seniority;
         this.classroom = classroom;
+        this.schoolId = schoolId;
     }
 
     /*
-        @Field()
-        @prop()
-        promotions?: Promotion[];
+
 
         @Field()
         @prop()

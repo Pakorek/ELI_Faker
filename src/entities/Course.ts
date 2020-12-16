@@ -1,4 +1,3 @@
-import {Teacher} from "./Teacher";
 import {Exercice} from "./Exercice";
 import {Program} from "./Program";
 import {ID, Field, InputType, ObjectType} from "type-graphql";
@@ -15,7 +14,6 @@ export class Course extends BaseEntity {
 
     @Field()
     @Column()
-    // @prop()
     title!: string;
 
     //subtitle!: string;
@@ -24,7 +22,7 @@ export class Course extends BaseEntity {
     @Column()
     content!: string;
 
-    //created_at!: string;
+    //created_at!: Date;
 
     @Field(() => ID)
     @ObjectIdColumn()

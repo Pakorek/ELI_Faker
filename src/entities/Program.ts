@@ -1,17 +1,33 @@
 import {Teacher} from "./Teacher";
 import {Promotion} from "./Promotion";
 import { Speciality } from "./Speciality";
+import {BaseEntity, Column} from "typeorm";
+import {Field, InputType, ObjectType} from "type-graphql";
 
-export class Program {
+@ObjectType('ProgramType')
+@InputType('ProgramInput')
+export class Program extends BaseEntity {
+    @Field()
+    @Column()
     title!: string;
 
+    @Field()
+    @Column()
     subtitle!: string;
 
-    start_date!: string;
+    @Field()
+    @Column()
+    start_date!: string; // Date
 
-    end_date!: string;
+    @Field()
+    @Column()
+    end_date!: string;   // Date
 
-    promotions!: Promotion[];
+    @Field()
+    @Column()
+    promotions!: Promotion[]; // ObjectID[]
 
+    @Field()
+    @Column()
     speciality!: Speciality;
 }

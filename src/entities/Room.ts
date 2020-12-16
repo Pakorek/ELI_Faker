@@ -2,8 +2,8 @@ import {ID, Field, ObjectType, InputType} from "type-graphql";
 import {Entity, ObjectIdColumn, Column, BaseEntity} from "typeorm";
 import {ObjectID} from "mongodb";
 
-@ObjectType('PromotionType')
-@InputType('PromotionInput')
+@ObjectType('RoomType')
+@InputType('RoomInput')
 @Entity()
 export class Room extends BaseEntity {
     @Field(() => ID)
@@ -16,13 +16,13 @@ export class Room extends BaseEntity {
 
     @Field()
     @Column()
-    name: string | number;
+    name!: number;
 
     @Field()
     @Column()
     url!: string;
 
-    constructor(name: string | number, floorId: ObjectID) {
+    constructor(name: number, floorId: ObjectID) {
         super();
         this.name = name;
         this.floorId = floorId;

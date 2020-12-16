@@ -12,6 +12,10 @@ export class Promotion {
     @ObjectIdColumn()
     _id!: ObjectID;
 
+    @Field(() => ID)
+    @Column()
+    schoolId: ObjectID;
+
     @Field()
     @Column()
     title: string;
@@ -24,11 +28,12 @@ export class Promotion {
     @Column()
     students!: ObjectID[];
 
-    //start_date!: string;
+    //start_date!: Date;
 
-    //end_date!: string;
+    //end_date!: Date;
 
-    constructor(title: string) {
-        this.title = title
+    constructor(title: string, schoolId: ObjectID) {
+        this.title = title;
+        this.schoolId = schoolId;
     }
 }
