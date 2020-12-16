@@ -4,33 +4,14 @@ import {Promotion} from "./Promotion";
 import {Student} from "./Student";
 import {Speciality} from "./Speciality";
 import {Field, InputType, ObjectType} from "type-graphql";
-import {BaseEntity, Column, ObjectIdColumn} from "typeorm";
+import {Column, Entity, ObjectIdColumn} from "typeorm";
 import { ObjectID } from "mongodb";
+import {Content} from "./Content";
 
-@ObjectType('UserType')
-@InputType('UserInput')
-// Entity ?
-export abstract class Evaluation extends BaseEntity{
-    @Field()
-    @Column()
-    title!: string;
-
-    @Field()
-    @Column()
-    subtitle!: string;
-
-    @Field()
-    @Column()
-    content!: string;
-
-    @Field()
-    @Column()
-    created_at!: string; // Date
-
-    @Field()
-    @ObjectIdColumn()
-    teacher!: ObjectID;
-
+@ObjectType('EvaluationType')
+@InputType('EvaluationInput')
+@Entity()
+export class Evaluation extends Content {
     @Field()
     @ObjectIdColumn()
     course!: ObjectID;
@@ -42,8 +23,4 @@ export abstract class Evaluation extends BaseEntity{
     @Field()
     @Column()
     max_grade!: number;
-
-    @Field()
-    @Column()
-    speciality!: Speciality;
 }

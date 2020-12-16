@@ -3,36 +3,37 @@ import {Program} from "./Program";
 import {ID, Field, InputType, ObjectType} from "type-graphql";
 import {Entity, ObjectIdColumn, Column, BaseEntity} from "typeorm";
 import {ObjectID} from "mongodb";
+import {Content} from "./Content";
 
 
 @ObjectType('CourseType')
 @Entity()
-export class Course extends BaseEntity {
-    @Field(() => ID)
-    @ObjectIdColumn()
-    _id!: ObjectID;
+export class Course extends Content {
+    // @Field(() => ID)
+    // @ObjectIdColumn()
+    // _id!: ObjectID;
+    //
+    // @Field()
+    // @Column()
+    // title!: string;
+    //
+    // @Field()
+    // @Column()
+    // //subtitle!: string;
+    //
+    // @Field()
+    // @Column()
+    // content!: string;
+    //
+    // //created_at!: Date;
 
-    @Field()
-    @Column()
-    title!: string;
+    // @Field(() => ID)
+    // @ObjectIdColumn()
+    // teacherId!: ObjectID;
 
-    @Field()
-    @Column()
-    //subtitle!: string;
-
-    @Field()
-    @Column()
-    content!: string;
-
-    //created_at!: Date;
-
-    @Field(() => ID)
-    @ObjectIdColumn()
-    teacherId!: ObjectID;
-
-    @Field(() => ID)
-    @ObjectIdColumn()
-    promotionId!: ObjectID;
+    // @Field(() => ID)
+    // @ObjectIdColumn()
+    // promotionId!: ObjectID;
 
     //duration!: number;
 

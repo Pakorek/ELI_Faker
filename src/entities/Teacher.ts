@@ -12,7 +12,7 @@ import {ObjectID} from "mongodb";
 @ObjectType('TeacherType')
 @InputType('TeacherInput')
 @Entity()
-export class Teacher extends BaseEntity {
+export class Teacher extends User {
     @Field(() => ID)
     @ObjectIdColumn()
     _id!: ObjectID;
@@ -20,14 +20,6 @@ export class Teacher extends BaseEntity {
     @Field(() => ID)
     @Column()
     schoolId: ObjectID;
-
-    @Field()
-    @Column()
-    firstName: string;
-
-    @Field()
-    @Column()
-    lastName: string;
 
     @Field()
     @Column()
@@ -58,13 +50,6 @@ export class Teacher extends BaseEntity {
         @prop()
         colleagues?: Staff[];
 
-        @Field()
-        @prop()
-        courses?: Course[];
-
-        @Field()
-        @prop()
-        evaluations?: Evaluation[];
     */
 
 }
